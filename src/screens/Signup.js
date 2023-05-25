@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, json } from 'react-router-dom'
+import { Link, json, } from 'react-router-dom'
  
 export default function () {
   const [credentials, setcredentials] = useState({name:'', email:'', password:'', location:''});
@@ -13,15 +13,17 @@ export default function () {
       },
       body: JSON.stringify({name: credentials.name, email: credentials.email, password:credentials.password, location: credentials.location})
     }) 
-    const json = await respones.json()
-    console.log(json)
-    if(json.success){
-      alert("please enter Valid credentials")
-    }else{
-      alert("Your Account has been Created Successfully")
-      window.location.replace("http://localhost:3000/Login");
-    }
-  }
+      const json = await respones.json()
+      console.log(json)
+      if(!json.sucess){
+        alert("please try with valid credentials");
+      }
+      if(json.sucess){
+        alert("Your account has been created successfully");
+        window.location.replace("http://localhost:5000/")
+
+      }
+    } 
   const onChange = (event)=>{
       setcredentials({...credentials, [event.target.name]:event.target.value} )
   }
