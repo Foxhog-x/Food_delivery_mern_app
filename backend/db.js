@@ -12,7 +12,8 @@ const mongoDB = async()=>{
    //  const getdata = await fetched_data.find({}).toArray()
    //  console.log(getdata)
     fetched_data.find({}).toArray().then((data)=>{
-        console.log()
+        global.food_items = data; 
+        console.log(global.food_items)
     })
 
    }

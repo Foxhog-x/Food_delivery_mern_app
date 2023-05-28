@@ -20,7 +20,7 @@ export default function () {
       }
       if(json.sucess){
         alert("Your account has been created successfully");
-        window.location.replace("http://localhost:5000/")
+        window.location.replace("http://localhost:3000/")
 
       }
     } 

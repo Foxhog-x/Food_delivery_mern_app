@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.send('Hello Worldx!')
 })
 
-
+app.use('/api' ,require('./Routes/DisplayData'))
 app.use('/api' ,require('./Routes/Createuser'))
 
 app.use('/api' ,require('./Routes/Loginuser'))

@@ -2,19 +2,37 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
+const { body, validationResult } = require('express-validator');  
+const bcrypt =  require("bcryptjs");
+const jwt  = require("jsonwebtoken");
+const secret = "heythisisnew"
+router.post('/loginuser',[body('email').isEmail(),
+body('password').isLength({min:8})
+ ], async (req, res) => {
 
-router.post('/loginuser', async (req, res) => {
+const result = await validationResult(req);
     var email = req.body.email
+    if(!result.isEmpty()){
+        return res.status(400).json({result: result.array()});
+     }
     try {
         let userdata = await User.findOne({email});
             if(!userdata){
                 return res.status(400).json({error:"please try with different email address"})
             }
-            if(req.body.password !== userdata.password){
+            const pwdpassword = await bcrypt.compare(req.body.password, userdata.password);
+            if(!pwdpassword){
                 return res.status(400).json({error: "invalid password"})
 
             }else{
-                res.json({sucess:true})
+                data = {
+                    user:{
+                        id: userdata.id
+                    }
+                }
+                authoToken = jwt.sign(data, secret);
+
+               return res.json({sucess:true, authoToken: authoToken})
             }
         } catch (error) {
             console.log(error)
