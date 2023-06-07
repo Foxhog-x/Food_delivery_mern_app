@@ -9,11 +9,12 @@ const mongoURI = "mongodb+srv://nicehashminer7744:new123456789@cluster0.29rw9zc.
 const mongoDB = async()=>{
     await(mongoose.connect(mongoURI).then(console.log("connected successfully"), console.error))
     const fetched_data = await mongoose.connection.db.collection("food_items");
-   //  const getdata = await fetched_data.find({}).toArray()
-   //  console.log(getdata)
+    const fetched_catdata =await mongoose.connection.db.collection("foodCategory");
+    const catData = await fetched_catdata.find({}).toArray()
     fetched_data.find({}).toArray().then((data)=>{
-        global.food_items = data; 
-        console.log(global.food_items)
+        global.food_items = data;
+        global.foodCategory = catData;
+        
     })
 
    }
