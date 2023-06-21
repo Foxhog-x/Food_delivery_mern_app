@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import { Navbar } from '../components/Navbar'
 import { Cards } from '../components/Cards'
 import Carousal from '../components/Carousal'
+import { Card } from 'react-bootstrap-v5'
 
 export const Home = () => {
   const [fooditem, setfooditem] = useState([]);
@@ -16,16 +17,17 @@ export const Home = () => {
       }
     });
 
-    let data = await response.json();
-    console.log(data[0]);
-     
+    let datax = await response.json();
+    setfoodCategory(datax[1]);
+    setfooditem(datax[0])
+
   }
   
   useEffect(()=>{
     loadData()
   },[])
       
-  return (
+  return(
 
     <div>
       <div>
@@ -34,11 +36,32 @@ export const Home = () => {
       <div>
         <Carousal/>
       </div>
-      <div className='m-3'>
-      <Cards/>
+      <div>
+      {
+        foodCategory !== [] ? foodCategory.map((items)=>{
+          return ( <div className=' row mb-3'>
+          <div key={items._id} className='container fs-3 m-3 '>{items.CategoryName}</div>
+          <hr/>
+          {
+            fooditem !== [] ? fooditem.filter((data)=>data.CategoryName === items.CategoryName).map(filteritems=>{
+              return(
+              <div key={filteritems._id} className='col-12 col-md-6 col-lg-3'>
+                 <Cards
+                 foodName={filteritems.name}
+                 options= {filteritems.options[0]}
+                 imgSrc = {filteritems.img}
+
+                 ></Cards>
+              </div>
+              )
+            }) : "no such thing available"
+          }
+         
+          </div>)
+        }) : ''
+      }
+           
        
-      
-      
       </div>  
       <div> 
       <Footer/>

@@ -30,9 +30,9 @@ const result = await validationResult(req);
                         id: userdata.id
                     }
                 }
-                authoToken = jwt.sign(data, secret);
+                authToken = jwt.sign(data, secret);
 
-               return res.json({sucess:true, authoToken: authoToken})
+               return res.json({sucess:true, authToken: authToken})
             }
         } catch (error) {
             console.log(error)
