@@ -47,9 +47,9 @@ export const Home = () => {
               return(
               <div key={filteritems._id} className='col-12 col-md-6 col-lg-3'>
                  <Cards
-                 foodName={filteritems.name}
+                 fooditem = {filteritems}
                  options= {filteritems.options[0]}
-                 imgSrc = {filteritems.img}
+                 
 
                  ></Cards>
               </div>

@@ -1,6 +1,7 @@
 const { default: mongoose } = require("mongoose");
  
 const mongoURI = "mongodb+srv://nicehashminer7744:new123456789@cluster0.29rw9zc.mongodb.net/gofoodmern?retryWrites=true&w=majority"
+ 
 // const mongoDB = async()   =>{
 //     await(mongoose.connect(mongoURI).then(console.log("connected sucessfully")))
 //     .catch (error => console.log(error));
