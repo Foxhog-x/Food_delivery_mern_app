@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useRef, useState } from 'react'
 import { useCart, useDispatchCart } from './ContextReducer';
 
 export const Cards = (props) => {
@@ -7,6 +7,7 @@ export const Cards = (props) => {
    let data = useCart()
    let options = props.options;
    let priceoptions = Object.keys(options);
+   let priceRef = useRef()
     
    
   const [qty , setQty] = useState(1)
@@ -14,13 +15,17 @@ export const Cards = (props) => {
 
 
   const handleAddtoCard = async () =>{
-    await disptch({type:'ADD',id:props.fooditem._id, name: props.fooditem.name, price: props.finalprice, qty: qty, size: size, img:props.fooditem.img})
+    await disptch({type:'ADD',id:props.fooditem._id, name: props.fooditem.name, price: finalPrice, qty: qty, size: size, img:props.fooditem.img})
      console.log(data)
   }
 
 
-let finalprice = qty * parseInt(options[size]);
+let finalPrice = qty * parseInt(options[size]);
 
+useEffect( () =>{
+  setSize(priceRef.current.value) 
+},[])
+//KEEP IT EMPTY BECAUSE WE WANT IT TO LOAD immediately AFTER as page is complete its renders
      
   return (
     <div  >
@@ -36,14 +41,14 @@ let finalprice = qty * parseInt(options[size]);
             ) 
         })}
         </select>
-        <select className='m-2 w-auto rounded' onChange= {(e) => setSize(e.target.value)}>
+        <select className='m-2 w-auto rounded' ref={priceRef} onChange= {(e) => setSize(e.target.value)}>
         {priceoptions.map((data)=>{
           return <option key={data} value={data}>{data}</option>
         })}
          
         </select>
       
-        <div className='fs-8 mx-auto position-relative'>₹{finalprice} <span><button className='m-2 w-auto bg-success rounded' onClick={handleAddtoCard}>Add to Cart</button></span></div>
+        <div className='fs-8 mx-auto position-relative'>₹{finalPrice} <span><button className='m-2 w-auto bg-success rounded' onClick={handleAddtoCard}>Add to Cart</button></span></div>
  
      
        
