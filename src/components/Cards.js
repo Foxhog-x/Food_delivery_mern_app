@@ -12,19 +12,26 @@ export const Cards = (props) => {
    
   const [qty , setQty] = useState(1)
   const [size, setSize] = useState("") 
+  
 
 
   const handleAddtoCard = async () =>{
+   
     await disptch({type:'ADD',id:props.fooditem._id, name: props.fooditem.name, price: finalPrice, qty: qty, size: size, img:props.fooditem.img})
      console.log(data)
   }
 
 
 let finalPrice = qty * parseInt(options[size]);
-
+ 
+   
+ 
 useEffect( () =>{
-  setSize(priceRef.current.value) 
-},[])
+  setSize( priceRef.current.value) 
+  
+},[ ])
+
+ 
 //KEEP IT EMPTY BECAUSE WE WANT IT TO LOAD immediately AFTER as page is complete its renders
      
   return (
