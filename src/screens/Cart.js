@@ -19,9 +19,11 @@ export default function Cart() {
     <div>
 
       {console.log(data)}
-      <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md' >
+      <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md   ' >
+      <div id='collapse1'> 
         <table className='table table-hover '>
           <thead className=' text-success fs-4'>
+          
             <tr>
               <th scope='col' >#</th>
               <th scope='col' >Name</th>
@@ -30,6 +32,7 @@ export default function Cart() {
               <th scope='col' >Amount</th>
               <th scope='col' ></th>
             </tr>
+           
           </thead>
           <tbody>
             {data.map((food, index) => (
@@ -43,6 +46,7 @@ export default function Cart() {
             ))}
           </tbody>
         </table>
+        </div>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
        
       </div>

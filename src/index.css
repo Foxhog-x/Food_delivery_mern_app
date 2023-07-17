@@ -20,6 +20,9 @@ code {
 #carousel{
   max-height: 500px;
 }
+#collapse1{
+  overflow-y:scroll;
+  height:500px;}
 
 #c arousel .carousel-item img {
   object-fit: cover;
@@ -31,3 +34,9 @@ code {
 #cart-root{
   background-color: aqua;
 }
+
+.table-data{
+  width:250px;
+  height:360px;
+  overflow:scroll;
+ }
