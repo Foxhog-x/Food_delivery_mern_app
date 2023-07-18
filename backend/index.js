@@ -1,7 +1,7 @@
  
 const express = require('express')
 const app = express()
-const port = 5000
+const PORT = process.env.PORT
 const mongodb = require('./db')
 const cors = require('cors')
 
