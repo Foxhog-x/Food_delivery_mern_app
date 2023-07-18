@@ -34,9 +34,3 @@ code {
 #cart-root{
   background-color: aqua;
 }
-
-.table-data{
-  width:250px;
-  height:360px;
-  overflow:scroll;
- }

@@ -3,14 +3,14 @@ import Footer from '../components/Footer'
 import { Navbar } from '../components/Navbar'
 import { Cards } from '../components/Cards'
 import Carousal from '../components/Carousal'
-import { Card } from 'react-bootstrap-v5'
-
+ 
+const base_URL =  require( '../services/helper.js');
 export const Home = () => {
   const [fooditem, setfooditem] = useState([]);
   const [foodCategory, setfoodCategory] = useState([]);
 
   const loadData = async (req, res) =>{
-    let response = await fetch('http://localhost:5000/api/foodData',{
+    let response = await fetch(`${base_URL}/api/foodData`,{
       method: 'POST',
       headers:{
         'content-type' : 'application/json'

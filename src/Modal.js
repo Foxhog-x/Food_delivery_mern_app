@@ -10,6 +10,7 @@ const MODAL_STYLES = {
   zIndex: 1000,
   height: '90%',
   width: '90%'
+  
 }
 
 const OVERLAY_STYLES = {
@@ -18,7 +19,7 @@ const OVERLAY_STYLES = {
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'grey',
+  backgroundColor: 'white',
   zIndex: 1000
 }
 

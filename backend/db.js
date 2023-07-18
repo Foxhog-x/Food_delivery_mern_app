@@ -1,6 +1,9 @@
 const { default: mongoose } = require("mongoose");
+require('dotenv').config()
+let mongoURI = process.env.mongoURI;
+
+
  
-const mongoURI = "mongodb+srv://nicehashminer7744:new123456789@cluster0.29rw9zc.mongodb.net/gofoodmern?retryWrites=true&w=majority"
  
 // const mongoDB = async()   =>{
 //     await(mongoose.connect(mongoURI).then(console.log("connected sucessfully")))
@@ -16,7 +19,7 @@ const mongoDB = async()=>{
         global.food_items = data;
         global.foodCategory = catData;
         
-    })
+    }) 
 
    }
        
@@ -26,3 +29,5 @@ const mongoDB = async()=>{
 
 
 module.exports = mongoDB;
+
+

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
-
+const base_URL =  require( '../services/helper.js');
 
 export const Login = () => {
   const [credentials, setcredentials] = useState({  email:'', password:''  });
   const navigate = useNavigate();
   const handleChange = async (e) =>{
     e.preventDefault();
-    const respones = await fetch("http://localhost:5000/api/loginuser",{
+    const respones = await fetch(`${base_URL}/api/loginuser`,{
       method: 'POST',
       headers:{
         'Content-Type' : 'application/json'
@@ -41,7 +41,7 @@ export const Login = () => {
     </div>
      
     <button type="submit" className="btn btn-primary">Submit</button>
-    <Link className="btn btn-primary m-3" to="/Login">Already User</Link>
+    <Link className="btn btn-primary m-3" to="/Signup">Create User</Link>
   </form></div>
   )
 }

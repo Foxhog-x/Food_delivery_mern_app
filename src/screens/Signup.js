@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { Link, json, } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
+const base_URL =  require( '../services/helper.js');
+
  
 export default function () {
   const [credentials, setcredentials] = useState({name:'', email:'', password:'', location:''});
-
+  const navigate = useNavigate();
   const handleChange = async (e) =>{
     e.preventDefault();
-    const respones = await fetch("http://localhost:5000/api/createuser",{
+    const respones = await fetch(`${base_URL}/api/createuser`,{
       method: 'POST',
       headers:{
         'Content-Type' : 'application/json'
@@ -20,7 +22,7 @@ export default function () {
       }
       if(json.sucess){
         alert("Your account has been created successfully");
-        window.location.replace("http://localhost:3000/")
+        navigate("/");
 
       }
     } 
