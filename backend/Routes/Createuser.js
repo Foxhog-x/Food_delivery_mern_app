@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 const { body, validationResult} = require('express-validator');  
-const { hasUnreliableEmptyValue } = require('@testing-library/user-event/dist/utils');
 const bycrypt = require('bcryptjs');
 const jwt  = require("jsonwebtoken");
 

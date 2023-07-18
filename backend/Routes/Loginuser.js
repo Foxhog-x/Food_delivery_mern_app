@@ -6,6 +6,10 @@ const { body, validationResult } = require('express-validator');
 const bcrypt =  require("bcryptjs");
 const jwt  = require("jsonwebtoken");
 const secret = process.env.secretkey
+
+
+
+
 router.post('/loginuser',[body('email').isEmail(),
 body('password').isLength({min:8})
  ], async (req, res) => {
