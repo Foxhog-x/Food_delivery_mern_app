@@ -2,8 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
 const base_URL =  require( '../services/helper.js');
-
+ 
 export const Login = () => {
+
+  
   const [credentials, setcredentials] = useState({  email:'', password:''  });
   const navigate = useNavigate();
   const handleChange = async (e) =>{
@@ -24,6 +26,7 @@ export const Login = () => {
       console.log(localStorage.getItem("authToken"))
       navigate("/");
     } 
+    window.location.reload()
   }
   const onChange = (event)=>{
       setcredentials({...credentials, [event.target.name]:event.target.value} )
